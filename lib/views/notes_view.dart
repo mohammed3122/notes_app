@@ -6,7 +6,6 @@ import 'package:notes_app/views/widgets/notes_list.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +14,7 @@ class NotesView extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 50),
-            CustomAppBar(),
+            CustomAppBar(icon: Icon(Icons.search, size: 30), text: 'Notes'),
             Expanded(child: NotesList()),
           ],
         ),
@@ -23,6 +22,8 @@ class NotesView extends StatelessWidget {
       floatingActionButton: CustomButton(
         onTap: () {
           showModalBottomSheet(
+            isScrollControlled: true,
+            // scrollControlDisabledMaxHeightRatio: 0.5,
             context: context,
             builder: (context) {
               return AddNewNote();

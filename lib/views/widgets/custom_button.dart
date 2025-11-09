@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/consts.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -26,7 +27,7 @@ class CustomButton extends StatelessWidget {
             BoxShadow(blurRadius: 5, color: shadowColor, offset: Offset(2, 2)),
           ],
           borderRadius: BorderRadius.circular(30),
-          color: Color(0xff53eed9),
+          color: kMainColor,
         ),
         child: Center(
           child: Text(

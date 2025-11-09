@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/consts.dart';
+import 'package:notes_app/functions/build_border.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
@@ -8,6 +10,7 @@ class CustomTextField extends StatefulWidget {
     required this.prefixIcon,
     required this.isPassword,
     this.hideText = false,
+    this.hasWidth = false,
     this.maxLines = 1,
     required this.keyboardType,
     // required this.myController,
@@ -23,6 +26,7 @@ class CustomTextField extends StatefulWidget {
   // final TextEditingController myController;
   final TextInputType keyboardType;
   final int maxLines;
+  final bool hasWidth;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -33,9 +37,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // width: 300,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+        padding: widget.hasWidth
+            ? EdgeInsets.zero
+            : const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         child: TextFormField(
           maxLines: widget.maxLines,
           onChanged: widget.onChanged,
@@ -48,7 +53,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           // controller: widget.myController,
           obscureText: _hideText,
           keyboardType: widget.keyboardType,
-          cursorColor: Colors.white,
+          cursorColor: kMainColor,
           decoration: InputDecoration(
             suffixIcon: widget.isPassword
                 ? IconButton(
@@ -69,18 +74,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             labelStyle: TextStyle(color: Color(0xff53ebd6), fontSize: 23),
             filled: true,
             // ignore: deprecated_member_use
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.white, width: 2),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.white, width: 2),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.white, width: 2),
-            ),
+            border: buildBorder(),
+            enabledBorder: buildBorder(),
+            focusedBorder: buildBorder(kMainColor),
           ),
         ),
       ),
