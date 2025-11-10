@@ -8,10 +8,10 @@ class AddNewNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      expand: false,
       initialChildSize: 0.7,
       maxChildSize: 0.9,
       minChildSize: 0.3,
+      expand: false,
       builder: (context, scrollController) {
         return SingleChildScrollView(
           controller: scrollController,
