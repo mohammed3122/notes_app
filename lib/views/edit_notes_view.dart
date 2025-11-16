@@ -23,7 +23,7 @@ class EditNotesView extends StatelessWidget {
               prefixIcon: Icon(Icons.title),
               isPassword: false,
               keyboardType: TextInputType.text,
-              onChanged: (title) {},
+              onSaved: (title) {},
             ),
             SizedBox(height: 20),
             CustomTextField(
@@ -34,7 +34,7 @@ class EditNotesView extends StatelessWidget {
               prefixIcon: Icon(Icons.description_outlined),
               isPassword: false,
               keyboardType: TextInputType.text,
-              onChanged: (title) {},
+              onSaved: (title) {},
             ),
           ],
         ),

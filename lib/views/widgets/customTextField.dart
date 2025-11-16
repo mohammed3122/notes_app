@@ -14,7 +14,7 @@ class CustomTextField extends StatefulWidget {
     this.maxLines = 1,
     required this.keyboardType,
     // required this.myController,
-    required this.onChanged,
+    required this.onSaved,
   });
 
   final String hintText;
@@ -22,7 +22,7 @@ class CustomTextField extends StatefulWidget {
   final Widget prefixIcon;
   final bool isPassword;
   final bool hideText;
-  final Function(String) onChanged;
+  final Function(String?)? onSaved;
   // final TextEditingController myController;
   final TextInputType keyboardType;
   final int maxLines;
@@ -43,13 +43,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
             : const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         child: TextFormField(
           maxLines: widget.maxLines,
-          onChanged: widget.onChanged,
-          validator: (data) {
-            if (data!.isEmpty) {
-              return 'this field required';
-            }
-            return null;
-          },
+          onSaved: widget.onSaved,
+          validator: (data) =>
+              data?.isEmpty ?? true ? 'this field is required' : null,
+
+          //  (data) {
+          //   if (data?.isEmpty??true) {
+          //     return 'this field required';
+          //   }
+          //   return null;
+          // },
           // controller: widget.myController,
           obscureText: _hideText,
           keyboardType: widget.keyboardType,
