@@ -44,15 +44,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
         child: TextFormField(
           maxLines: widget.maxLines,
           onSaved: widget.onSaved,
-          validator: (data) =>
-              data?.isEmpty ?? true ? 'this field is required' : null,
-
-          //  (data) {
-          //   if (data?.isEmpty??true) {
-          //     return 'this field required';
-          //   }
-          //   return null;
-          // },
+          validator: (data) {
+            if (data?.isEmpty ?? true) {
+              return 'this field is required';
+            } else {
+              return null;
+            }
+            // ""
+            // null
+          },
           // controller: widget.myController,
           obscureText: _hideText,
           keyboardType: widget.keyboardType,
