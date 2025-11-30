@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/views/widgets/customTextField.dart';
 import 'package:notes_app/views/widgets/custom_button.dart';
 
-class FormInput extends StatefulWidget {
-  const FormInput({super.key});
+class FormAddNote extends StatefulWidget {
+  const FormAddNote({super.key});
 
   @override
-  State<FormInput> createState() => _FormInputState();
+  State<FormAddNote> createState() => _FormAddNoteState();
 }
 
-class _FormInputState extends State<FormInput> {
+class _FormAddNoteState extends State<FormAddNote> {
   String? noteTitle, noteContent;
   final GlobalKey<FormState> formkey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
@@ -46,7 +46,6 @@ class _FormInputState extends State<FormInput> {
             titleButton: 'Add',
             onTap: () {
               if (formkey.currentState!.validate()) {
-                formkey.currentState!.save();
               } else {
                 setState(() {
                   autovalidateMode = AutovalidateMode.always;
