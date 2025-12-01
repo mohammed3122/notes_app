@@ -1,32 +1,22 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SimpleBlocObserver implements BlocObserver {
+class SimpleBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
-    debugPrint('Change in ${bloc.runtimeType} : change : $change');
+    super.onChange(bloc, change);
+    debugPrint('Change in ${bloc.runtimeType} : $change');
   }
 
   @override
-  void onClose(BlocBase bloc) {}
+  void onClose(BlocBase bloc) {
+    super.onClose(bloc);
+    debugPrint('close in : $bloc');
+  }
 
   @override
-  void onCreate(BlocBase bloc) {}
-
-  @override
-  void onDone(
-    Bloc bloc,
-    Object? event, [
-    Object? error,
-    StackTrace? stackTrace,
-  ]) {}
-
-  @override
-  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {}
-
-  @override
-  void onEvent(Bloc bloc, Object? event) {}
-
-  @override
-  void onTransition(Bloc bloc, Transition transition) {}
+  void onCreate(BlocBase bloc) {
+    super.onCreate(bloc);
+    debugPrint('Create in : $bloc');
+  }
 }

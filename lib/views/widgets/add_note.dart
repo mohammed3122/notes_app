@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/views/widgets/form_input.dart';
 import 'package:notes_app/views/widgets/messanger_snackBar.dart';
@@ -12,13 +11,15 @@ class AddNewNote extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddNoteCubit(),
-      child: DraggableScrollableSheet(
-        initialChildSize: 0.7,
-        maxChildSize: 0.9,
-        minChildSize: 0.3,
-        expand: false,
-        builder: (context, scrollController) {
-          return BlocConsumer<AddNoteCubit, AddNoteCubitState>(
+      child:
+          //  DraggableScrollableSheet(
+          //   initialChildSize: 0.6,
+          //   maxChildSize: 0.9,
+          //   minChildSize: 0.3,
+          //   expand: false,
+          //   builder: (context, scrollController) {
+          //     return
+          BlocConsumer<AddNoteCubit, AddNoteCubitState>(
             listener: (context, state) {
               if (state is AddNoteCubitFailed) {
                 showSnackBarMessage(
@@ -38,17 +39,23 @@ class AddNewNote extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return ModalProgressHUD(
-                inAsyncCall: state is AddNoteCubitLoading ? true : false,
-                child: SingleChildScrollView(
-                  controller: scrollController,
-                  child: FormAddNote(),
+              return AbsorbPointer(
+                absorbing: state is AddNoteCubitLoading ? true : false,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom,
+                  ),
+                  child: SingleChildScrollView(
+                    // controller: scrollController,
+                    child: FormAddNote(),
+                  ),
+                  // ),
                 ),
               );
+              //   },
+              // );
             },
-          );
-        },
-      ),
+          ),
     );
   }
 }

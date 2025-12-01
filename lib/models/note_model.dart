@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 part 'note_model.g.dart'; // ← لازم تكون مكتوبة هنا ومطابقة لاسم الملف 100%
@@ -9,7 +10,7 @@ class NoteModel extends HiveObject {
   @HiveField(1)
   final String content;
   @HiveField(2)
-  final DateTime date;
+  final String date;
   @HiveField(3)
   final int color;
 

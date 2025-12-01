@@ -22,7 +22,7 @@ class CustomTextField extends StatefulWidget {
   final Widget prefixIcon;
   final bool isPassword;
   final bool hideText;
-  final Function(String?)? onSaved;
+  final Function(String?) onSaved;
   // final TextEditingController myController;
   final TextInputType keyboardType;
   final int maxLines;

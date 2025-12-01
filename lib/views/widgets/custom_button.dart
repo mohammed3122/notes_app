@@ -9,12 +9,14 @@ class CustomButton extends StatelessWidget {
     required this.height,
     required this.width,
     required this.shadowColor,
+    this.isLoading = false,
   });
   final String titleButton;
   final VoidCallback onTap;
   final double height;
   final double width;
   final Color shadowColor;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,10 +32,12 @@ class CustomButton extends StatelessWidget {
           color: kMainColor,
         ),
         child: Center(
-          child: Text(
-            titleButton,
-            style: TextStyle(fontSize: 30, color: Colors.black),
-          ),
+          child: isLoading
+              ? CircularProgressIndicator(color: Colors.black)
+              : Text(
+                  titleButton,
+                  style: TextStyle(fontSize: 30, color: Colors.black),
+                ),
         ),
       ),
     );

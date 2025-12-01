@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_cubit_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/widgets/customTextField.dart';
 import 'package:notes_app/views/widgets/custom_button.dart';
 
@@ -10,7 +13,8 @@ class FormAddNote extends StatefulWidget {
 }
 
 class _FormAddNoteState extends State<FormAddNote> {
-  String? noteTitle, noteContent;
+  String? noteTitle;
+  String? noteContent;
   final GlobalKey<FormState> formkey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
@@ -42,19 +46,32 @@ class _FormAddNoteState extends State<FormAddNote> {
             },
           ),
           SizedBox(height: 15),
-          CustomButton(
-            titleButton: 'Add',
-            onTap: () {
-              if (formkey.currentState!.validate()) {
-              } else {
-                setState(() {
-                  autovalidateMode = AutovalidateMode.always;
-                });
-              }
+          BlocBuilder<AddNoteCubit, AddNoteCubitState>(
+            builder: (context, state) {
+              return CustomButton(
+                isLoading: state is AddNoteCubitLoading ? true : false,
+                titleButton: 'Add',
+                onTap: () {
+                  if (formkey.currentState!.validate()) {
+                    formkey.currentState!.save();
+                    NoteModel noteModel = NoteModel(
+                      title: noteTitle!,
+                      content: noteContent!,
+                      date: DateTime.now().toString(),
+                      color: Colors.green.toARGB32(),
+                    );
+                    BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                  } else {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
+                  }
+                },
+                height: 60,
+                width: 300,
+                shadowColor: Colors.white.withValues(alpha: 0.3),
+              );
             },
-            height: 60,
-            width: 300,
-            shadowColor: Colors.white.withValues(alpha: 0.3),
           ),
         ],
       ),
