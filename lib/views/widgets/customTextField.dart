@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/consts.dart';
 import 'package:notes_app/functions/build_border.dart';
 
-class CustomTextField extends StatefulWidget {
-  const CustomTextField({
+class CustomTextFormField extends StatefulWidget {
+  const CustomTextFormField({
     super.key,
     required this.hintText,
     required this.labelText,
@@ -29,10 +29,10 @@ class CustomTextField extends StatefulWidget {
   final bool hasWidth;
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
   late bool _hideText = widget.hideText;
   @override
   Widget build(BuildContext context) {

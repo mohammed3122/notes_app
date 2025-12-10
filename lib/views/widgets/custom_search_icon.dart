@@ -1,4 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/preview_note/preview_notes_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 
 class CustomSearchIcon extends StatelessWidget {
   const CustomSearchIcon({super.key, required this.icon});
@@ -12,7 +17,14 @@ class CustomSearchIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color: Colors.white.withValues(alpha: .1),
       ),
-      child: IconButton(icon: icon, onPressed: () {}),
+      child: IconButton(
+        icon: icon,
+        onPressed: () {
+          // List<NoteModel> notes =
+          //     BlocProvider.of<PreviewNoteCubit>(context).previewNote() ?? [];
+          // log(notes.length.toString());
+        },
+      ),
     );
   }
 }

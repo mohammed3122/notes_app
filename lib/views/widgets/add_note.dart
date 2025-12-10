@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit_cubit.dart';
+import 'package:notes_app/cubits/preview_note/preview_notes_cubit.dart';
 import 'package:notes_app/views/widgets/form_input.dart';
 import 'package:notes_app/views/widgets/messanger_snackBar.dart';
 
@@ -36,6 +37,7 @@ class AddNewNote extends StatelessWidget {
                   backgroundColor: Colors.green,
                 );
                 Navigator.pop(context);
+                BlocProvider.of<PreviewNoteCubit>(context).previewNote();
               }
             },
             builder: (context, state) {

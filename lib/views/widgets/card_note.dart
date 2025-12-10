@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/preview_note/preview_notes_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_notes_view.dart';
 
 class CardNote extends StatelessWidget {
-  const CardNote({super.key, required this.backGroundColor});
+  const CardNote({
+    super.key,
+    required this.backGroundColor,
+    required this.note,
+  });
   final Color backGroundColor;
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 2.0),
       child: SizedBox(
-        // height: 200,
         child: GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, EditNotesView.id);
@@ -27,20 +34,21 @@ class CardNote extends StatelessWidget {
                       children: [
                         // Spacer(flex: 1),
                         SizedBox(height: 20),
-                        Text(
-                          'Title Note',
-                          style: TextStyle(color: Colors.black, fontSize: 30),
+                        SizedBox(
+                          width: 60,
+                          child: Text(
+                            note.title,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(color: Colors.black, fontSize: 30),
+                          ),
                         ),
                         // Spacer(flex: 1),
                         SizedBox(height: 20),
                         Text(
-                          'Build Note App By\nMohammd Awd',
+                          note.content,
                           style: TextStyle(color: Colors.white, fontSize: 16),
-                          // overflow: TextOverflow.ellipsis,
-                          // maxLines: 3,
                         ),
                         SizedBox(height: 40),
-                        // Spacer(flex: 3),
                       ],
                     ),
                   ),
@@ -52,7 +60,12 @@ class CardNote extends StatelessWidget {
                       children: [
                         // Spacer(flex: 1),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            note.delete();
+                            BlocProvider.of<PreviewNoteCubit>(
+                              context,
+                            ).previewNote();
+                          },
                           icon: Icon(
                             Icons.delete,
                             color: Colors.black,

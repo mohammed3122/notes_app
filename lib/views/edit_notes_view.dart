@@ -16,7 +16,7 @@ class EditNotesView extends StatelessWidget {
             SizedBox(height: 50),
             CustomAppBar(icon: Icon(Icons.done, size: 30), text: 'Edit Notes'),
             SizedBox(height: 30),
-            CustomTextField(
+            CustomTextFormField(
               hasWidth: true,
               hintText: 'ex : My Day',
               labelText: 'Title',
@@ -26,7 +26,7 @@ class EditNotesView extends StatelessWidget {
               onSaved: (title) {},
             ),
             SizedBox(height: 20),
-            CustomTextField(
+            CustomTextFormField(
               hasWidth: true,
               hintText: 'ex : This is a nice day',
               labelText: 'Content',

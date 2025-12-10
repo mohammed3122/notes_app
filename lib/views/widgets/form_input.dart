@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit_cubit.dart';
+import 'package:notes_app/cubits/preview_note/preview_notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/widgets/customTextField.dart';
 import 'package:notes_app/views/widgets/custom_button.dart';
@@ -24,7 +25,7 @@ class _FormAddNoteState extends State<FormAddNote> {
       autovalidateMode: autovalidateMode,
       child: Column(
         children: [
-          CustomTextField(
+          CustomTextFormField(
             hintText: 'ex : My Day',
             labelText: 'Title',
             prefixIcon: Icon(Icons.title),
@@ -34,7 +35,7 @@ class _FormAddNoteState extends State<FormAddNote> {
               noteTitle = title;
             },
           ),
-          CustomTextField(
+          CustomTextFormField(
             hintText: 'ex : This is a nice day',
             labelText: 'Content',
             maxLines: 8,
@@ -73,6 +74,7 @@ class _FormAddNoteState extends State<FormAddNote> {
               );
             },
           ),
+          SizedBox(height: 25),
         ],
       ),
     );
