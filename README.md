@@ -30,7 +30,7 @@
 ---
 
 ## 📱 Screenshots
-> (يمكنك إضافة صور للتطبيق هنا لاحقًا)
+![](https://github.com/mohammed3122/notes_app/blob/main/screenshots/global%20application.png)
 
 ---
 
