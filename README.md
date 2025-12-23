@@ -30,7 +30,7 @@
 
 ---
 
-##  Structrue
+##  Structure
 ![](https://github.com/mohammed3122/notes_app/blob/main/screenshots/structure.png)
 
 ---
