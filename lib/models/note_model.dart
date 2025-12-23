@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'note_model.g.dart'; // ← لازم تكون مكتوبة هنا ومطابقة لاسم الملف 100%
+part 'note_model.g.dart';
 
 @HiveType(typeId: 0)
 class NoteModel extends HiveObject {

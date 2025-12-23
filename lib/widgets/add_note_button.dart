@@ -46,8 +46,6 @@ class AddNewNote extends StatelessWidget {
                   child: FormAddNoteView(),
                 ),
               );
-              //   },
-              // );
             },
           ),
         );

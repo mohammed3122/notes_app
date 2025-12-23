@@ -1,16 +1,43 @@
-# notes_app
+# 📝 Notes App (Flutter)
 
-A new Flutter project.
+تطبيق ملاحظات بسيط معمول باستخدام **Flutter**، يهدف إلى إنشاء وتخزين وإدارة الملاحظات بشكل سريع وسهل.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
+- إضافة ملاحظات جديدة
+- عرض جميع الملاحظات
+- حفظ الملاحظات بشكل دائم على الجهاز
+- أداء سريع وبسيط
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Technologies Used
+- **Flutter**
+- **Cubit** لإدارة الحالة (State Management)
+- **Hive** لتخزين الملاحظات محليًا (Local Storage)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 📦 State Management
+تم استخدام **Cubit** لتنظيم وإدارة حالة التطبيق بطريقة نظيفة وسهلة التطوير.
+
+---
+
+## 💾 Local Storage
+تم استخدام **Hive** كقاعدة بيانات محلية خفيفة وسريعة لتخزين الملاحظات بدون الحاجة إلى إنترنت.
+
+---
+
+## 📱 Screenshots
+> (يمكنك إضافة صور للتطبيق هنا لاحقًا)
+
+---
+
+## ▶️ Getting Started
+
+لتشغيل المشروع على جهازك:
+
+```bash
+flutter pub get
+flutter run

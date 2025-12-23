@@ -69,10 +69,20 @@ class CardNote extends StatelessWidget {
                       ),
                       // Spacer(),
                       SizedBox(height: 60),
-                      Text(
-                        textAlign: TextAlign.end,
-                        note.date,
-                        style: TextStyle(color: Colors.white),
+                      Container(
+                        height: 50,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.white),
+                        ),
+                        child: Center(
+                          child: Text(
+                            textAlign: TextAlign.end,
+                            note.date,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
                       ),
                       // Spacer(flex: 1),
                     ],

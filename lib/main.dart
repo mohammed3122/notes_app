@@ -15,9 +15,7 @@ void main() async {
   //===================
   Bloc.observer = SimpleBlocObserver();
   //===================
-  runApp(
-    BlocProvider(create: (context) => PreviewNoteCubit(), child: NotesApp()),
-  );
+  runApp(NotesApp());
 }
 
 class NotesApp extends StatelessWidget {
@@ -25,14 +23,17 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // scaffoldBackgroundColor: Colors.grey,
-        brightness: Brightness.dark,
+    return BlocProvider(
+      create: (context) => PreviewNoteCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          // scaffoldBackgroundColor: Colors.grey,
+          brightness: Brightness.dark,
+        ),
+        home: NotesView(),
+        routes: {EditNotesView.id: (context) => EditNotesView()},
       ),
-      home: NotesView(),
-      routes: {EditNotesView.id: (context) => EditNotesView()},
     );
   }
 }
