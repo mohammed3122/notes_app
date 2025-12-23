@@ -30,6 +30,11 @@
 
 ---
 
+##  Structrue
+![](https://github.com/mohammed3122/notes_app/blob/main/screenshots/structure.png)
+
+---
+
 ## 📱 Screenshots
 ![](https://github.com/mohammed3122/notes_app/blob/main/screenshots/global%20application.png)
 
