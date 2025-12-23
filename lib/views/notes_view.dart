@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/preview_note/preview_notes_cubit.dart';
@@ -31,6 +29,7 @@ class _NotesViewState extends State<NotesView> {
           children: [
             SizedBox(height: 50),
             CustomAppBar(icon: Icon(Icons.search, size: 30), text: 'Notes'),
+
             Expanded(child: NotesList()),
           ],
         ),
