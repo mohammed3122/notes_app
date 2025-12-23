@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/consts.dart';
 
 void showSnackBarMessage(
   BuildContext context, {
@@ -9,7 +10,7 @@ void showSnackBarMessage(
   final snackBar = SnackBar(
     content: Row(
       children: [
-        Icon(icon, color: Colors.white),
+        Icon(icon, color: kMainColor),
         const SizedBox(width: 12),
         Expanded(child: Text(message, style: const TextStyle(fontSize: 16))),
       ],

@@ -5,12 +5,8 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_notes_view.dart';
 
 class CardNote extends StatelessWidget {
-  const CardNote({
-    super.key,
-    required this.backGroundColor,
-    required this.note,
-  });
-  final Color backGroundColor;
+  const CardNote({super.key, required this.note});
+
   final NoteModel note;
   @override
   Widget build(BuildContext context) {
@@ -19,13 +15,14 @@ class CardNote extends StatelessWidget {
       child: SizedBox(
         child: GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, EditNotesView.id);
+            Navigator.pushNamed(context, EditNotesView.id, arguments: note);
           },
           child: Card(
-            color: backGroundColor,
+            color: Color(note.color),
             child: Padding(
               padding: const EdgeInsets.only(top: 8.0, bottom: 8),
               child: Row(
+                mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
@@ -35,7 +32,7 @@ class CardNote extends StatelessWidget {
                         // Spacer(flex: 1),
                         SizedBox(height: 20),
                         SizedBox(
-                          width: 60,
+                          width: 205,
                           child: Text(
                             note.title,
                             overflow: TextOverflow.ellipsis,
@@ -44,44 +41,43 @@ class CardNote extends StatelessWidget {
                         ),
                         // Spacer(flex: 1),
                         SizedBox(height: 20),
-                        Text(
-                          note.content,
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        SizedBox(
+                          width: 205,
+                          child: Text(
+                            note.content,
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
                         ),
                         SizedBox(height: 40),
                       ],
                     ),
                   ),
-                  Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        // Spacer(flex: 1),
-                        IconButton(
-                          onPressed: () {
-                            note.delete();
-                            BlocProvider.of<PreviewNoteCubit>(
-                              context,
-                            ).previewNote();
-                          },
-                          icon: Icon(
-                            Icons.delete,
-                            color: Colors.black,
-                            size: 30,
-                          ),
-                        ),
-                        // Spacer(flex: 2),
-                        SizedBox(height: 60),
-                        Text(
-                          r'novamber 8,2025',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        // Spacer(flex: 1),
-                      ],
-                    ),
+                  // Spacer(),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          note.delete();
+                          BlocProvider.of<PreviewNoteCubit>(
+                            context,
+                          ).previewNote();
+                        },
+                        icon: Icon(Icons.delete, color: Colors.black, size: 30),
+                      ),
+                      // Spacer(),
+                      SizedBox(height: 60),
+                      Text(
+                        textAlign: TextAlign.end,
+                        note.date,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      // Spacer(flex: 1),
+                    ],
                   ),
+                  // ),
                 ],
               ),
             ),

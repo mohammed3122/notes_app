@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/consts.dart';
 import 'package:notes_app/cubits/preview_note/preview_notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/views/widgets/card_note.dart';
+import 'package:notes_app/widgets/card_note.dart';
 
 class NotesList extends StatelessWidget {
   const NotesList({super.key});
@@ -40,10 +40,7 @@ class NotesList extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 16),
             itemCount: notes.length,
             itemBuilder: (context, index) {
-              return CardNote(
-                backGroundColor: Colors.green,
-                note: notes[index],
-              );
+              return CardNote(note: notes[index]);
             },
           );
         }

@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/cubits/add_note_cubit/add_note_cubit_cubit.dart';
+import 'package:notes_app/cubits/add_note/add_note_cubit_cubit.dart';
 import 'package:notes_app/cubits/preview_note/preview_notes_cubit.dart';
-import 'package:notes_app/views/widgets/form_input.dart';
-import 'package:notes_app/views/widgets/messanger_snackBar.dart';
+import 'package:notes_app/views/form_input_view.dart';
+import 'package:notes_app/widgets/messanger_snackBar.dart';
 
 class AddNewNote extends StatelessWidget {
   const AddNewNote({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddNoteCubit(),
-      child:
-          //  DraggableScrollableSheet(
-          //   initialChildSize: 0.6,
-          //   maxChildSize: 0.9,
-          //   minChildSize: 0.3,
-          //   expand: false,
-          //   builder: (context, scrollController) {
-          //     return
-          BlocConsumer<AddNoteCubit, AddNoteCubitState>(
+    return DraggableScrollableSheet(
+      expand: false,
+      initialChildSize: 0.7,
+      maxChildSize: 0.9,
+      minChildSize: 0.4,
+      builder: (context, scrollController) {
+        return BlocProvider(
+          create: (context) => AddNoteCubit(),
+          child: BlocConsumer<AddNoteCubit, AddNoteCubitState>(
             listener: (context, state) {
               if (state is AddNoteCubitFailed) {
                 showSnackBarMessage(
@@ -43,21 +41,17 @@ class AddNewNote extends StatelessWidget {
             builder: (context, state) {
               return AbsorbPointer(
                 absorbing: state is AddNoteCubitLoading ? true : false,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom,
-                  ),
-                  child: SingleChildScrollView(
-                    // controller: scrollController,
-                    child: FormAddNote(),
-                  ),
-                  // ),
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: FormAddNoteView(),
                 ),
               );
               //   },
               // );
             },
           ),
+        );
+      },
     );
   }
 }

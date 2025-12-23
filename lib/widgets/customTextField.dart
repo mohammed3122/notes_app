@@ -6,27 +6,29 @@ class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
     required this.hintText,
-    required this.labelText,
+
     required this.prefixIcon,
     required this.isPassword,
     this.hideText = false,
     this.hasWidth = false,
     this.maxLines = 1,
     required this.keyboardType,
-    // required this.myController,
-    required this.onSaved,
+    this.labelText,
+    this.onSaved,
+    this.onChanged,
   });
 
   final String hintText;
-  final String labelText;
+  final String? labelText;
   final Widget prefixIcon;
   final bool isPassword;
   final bool hideText;
-  final Function(String?) onSaved;
+  final Function(String?)? onSaved;
   // final TextEditingController myController;
   final TextInputType keyboardType;
   final int maxLines;
   final bool hasWidth;
+  final Function(String)? onChanged;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -40,9 +42,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       child: Padding(
         padding: widget.hasWidth
             ? EdgeInsets.zero
-            : const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            : const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         child: TextFormField(
           maxLines: widget.maxLines,
+          onChanged: widget.onChanged,
+          // onFieldSubmitted: widget.onFieldSubmitted,
           onSaved: widget.onSaved,
           validator: (data) {
             if (data?.isEmpty ?? true) {

@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/preview_note/preview_notes_cubit.dart';
-import 'package:notes_app/views/widgets/add_note.dart';
-import 'package:notes_app/views/widgets/custom_app_bar.dart';
-import 'package:notes_app/views/widgets/custom_button.dart';
-import 'package:notes_app/views/widgets/notes_list.dart';
+import 'package:notes_app/widgets/add_note.dart';
+import 'package:notes_app/widgets/custom_app_bar.dart';
+import 'package:notes_app/widgets/custom_button.dart';
+import 'package:notes_app/widgets/notes_list.dart';
 
 class NotesView extends StatefulWidget {
   const NotesView({super.key});
