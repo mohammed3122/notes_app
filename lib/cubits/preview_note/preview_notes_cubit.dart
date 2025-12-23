@@ -13,7 +13,6 @@ class PreviewNoteCubit extends Cubit<PreviewNotesState> {
   previewNote() {
     var dataBox = Hive.box<NoteModel>(kNotesBox);
     notes = dataBox.values.toList();
-
     if (notes!.isEmpty) {
       emit(PreviewNoteNoNotes());
     } else {

@@ -20,7 +20,7 @@ class CardNote extends StatelessWidget {
           child: Card(
             color: Color(note.color),
             child: Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [

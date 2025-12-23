@@ -43,11 +43,9 @@ class _EditNotesViewState extends State<EditNotesView> {
                     context,
                     message: 'Edit : Note is Edit',
                     icon: Icons.edit,
-
                     backgroundColor: Colors.yellow.shade500,
                   );
                 }
-
                 BlocProvider.of<PreviewNoteCubit>(context).previewNote();
               },
             ),
